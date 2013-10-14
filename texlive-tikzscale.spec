@@ -6,7 +6,7 @@
 # catalog-version 0.2.6
 Name:		texlive-tikzscale
 Version:	0.2.6
-Release:	1
+Release:	2
 Summary:	Resize pictures while respecting text size
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/graphics/pgf/contrib/tikzscale
