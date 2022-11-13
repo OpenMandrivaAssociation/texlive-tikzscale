@@ -1,19 +1,13 @@
-# revision 30637
-# category Package
-# catalog-ctan /graphics/pgf/contrib/tikzscale
-# catalog-date 2013-05-22 10:58:45 +0200
-# catalog-license lppl1.3
-# catalog-version 0.2.6
 Name:		texlive-tikzscale
-Version:	0.2.6
-Release:	11
+Version:	30637
+Release:	1
 Summary:	Resize pictures while respecting text size
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/graphics/pgf/contrib/tikzscale
 License:	LPPL1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -25,12 +19,12 @@ tikzpictures. It allows scaling of TikZ images and PGFPlots to
 a given width or height without changing the text size.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -62,7 +56,8 @@ a given width or height without changing the text size.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
