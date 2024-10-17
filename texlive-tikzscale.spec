@@ -3,7 +3,7 @@ Version:	30637
 Release:	2
 Summary:	Resize pictures while respecting text size
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/graphics/pgf/contrib/tikzscale
+URL:		https://www.ctan.org/tex-archive/graphics/pgf/contrib/tikzscale
 License:	LPPL1.3
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.doc.r%{version}.tar.xz
