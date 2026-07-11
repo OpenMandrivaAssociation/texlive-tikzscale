@@ -1,66 +1,24 @@
-Name:		texlive-tikzscale
-Version:	30637
-Release:	2
+%global tl_name tikzscale
+%global tl_revision 78251
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.2.6
+Release:	%{tl_revision}.1
 Summary:	Resize pictures while respecting text size
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/graphics/pgf/contrib/tikzscale
-License:	LPPL1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.source.r%{version}.tar.xz
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tikzscale.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Requires:	texlive(xstring)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
 The package extends the \includegraphics command to support
-tikzpictures. It allows scaling of TikZ images and PGFPlots to
-a given width or height without changing the text size.
+tikzpictures. It allows scaling of TikZ images and PGFPlots to a given
+width or height without changing the text size.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/tikzscale/tikzscale.sty
-%doc %{_texmfdistdir}/doc/latex/tikzscale/3Dplot.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/README
-%doc %{_texmfdistdir}/doc/latex/tikzscale/alt.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/histogramNormal.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/invisible.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/linewidth.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/only.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/onslide.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/pause.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/pgfplots-test.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/pgfplots.randn.dat
-%doc %{_texmfdistdir}/doc/latex/tikzscale/temporal.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/test-tikzscale.pdf
-%doc %{_texmfdistdir}/doc/latex/tikzscale/test-tikzscale.tex
-%doc %{_texmfdistdir}/doc/latex/tikzscale/testNode.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/testRectangle.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/testgraphic2D.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/tikzscale-beamer.tex
-%doc %{_texmfdistdir}/doc/latex/tikzscale/tikzscale.pdf
-%doc %{_texmfdistdir}/doc/latex/tikzscale/uncover.tikz
-%doc %{_texmfdistdir}/doc/latex/tikzscale/visible.tikz
-#- source
-%doc %{_texmfdistdir}/source/latex/tikzscale/tikzscale.dtx
-%doc %{_texmfdistdir}/source/latex/tikzscale/tikzscale.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
